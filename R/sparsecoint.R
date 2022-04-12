@@ -42,7 +42,7 @@ fit.sparsecoint <- function (x) {
 #' @export
 refit.sparsecoint <- function (x, data, exo) {
   x$data <- setupData(data, exo, x$p, x$exo_p)
-  x$fitted <- fitted.sparsecoint(x)
+  x$fitted <- fitted.sparsecoint(x, TRUE)
   x$residuals <- tail(x$data$level, nrow(x$fitted)) - x$fitted
   return(x)
 }
