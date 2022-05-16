@@ -78,7 +78,7 @@ samples.predict.sparsecoint <- function (x, h=1, exo=NULL, samples=1) {
   forecasts <- vector("list", samples)
 
   for (i in seq_along(forecasts)) {
-    forecasts[[i]] <- predict(x, h, exo=exo, error=errors[((i-1)*h+1):(i*h),])
+    forecasts[[i]] <- predict(x, h, exo=exo, error=errors[((i-1)*h+1):(i*h), , drop=FALSE])
   }
   return(forecasts)
 }
