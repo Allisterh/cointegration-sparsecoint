@@ -32,7 +32,7 @@ crossValidate <- function (q, cutoff, Y, X, lambdas, tol) {
     cv_n <- cv_n + 1
   }
 
-  cvscore_means <- colMeans(cvscore)
+  cvscore_means <- colMeans(cvscore, na.rm=TRUE)
   cvscore_means <- cvscore_means[!is.na(cvscore_means)]
   lambdas <- lambdas[!is.na(cvscore_means)]
 

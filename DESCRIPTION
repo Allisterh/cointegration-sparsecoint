@@ -1,7 +1,7 @@
 Package: sparsecoint
 Type: Package
 Title: Forecasting using sparse cointegration
-Version: 1.0.1
+Version: 1.0.2
 Date: 2021-12-22
 Authors@R: c(
     person("Indicio Technologies AB", email = "info@indicio.com", role=c("aut")),
