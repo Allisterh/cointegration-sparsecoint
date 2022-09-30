@@ -13,7 +13,7 @@ setupData <- function (data, exo, p=1, exo_p=p) {
     exo_diff <- NULL
   }
   level <- tail(data, nrow(temp_data))
-  diff <- temp_data[,seq_len(q)]
-  diff_lag <- temp_data[,-seq_len(q)]
+  diff <- temp_data[,seq_len(q), drop=FALSE]
+  diff_lag <- temp_data[,-seq_len(q), drop=FALSE]
   return(list(level=level, diff=diff, diff_lag=diff_lag, exo=exo, exo_diff=exo_diff))
 }

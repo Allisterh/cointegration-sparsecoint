@@ -2,6 +2,7 @@
 #'
 #' @export
 sparsecoint <- function (data, p=1, exo=NULL, exo_p=p, intercept=FALSE) {
+  if (ncol(data) < 2) stop("Sparse cointegration requires at least two endogenous variables.")
   model <- new_sparsecoint(data, p, exo, exo_p, intercept)
   model <- fit.sparsecoint(model)
   return(model)

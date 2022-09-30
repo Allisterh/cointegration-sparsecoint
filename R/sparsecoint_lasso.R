@@ -110,7 +110,7 @@ initBetaFinal <- function (Y, Z, X, alpha.init, p, q, rank) {
   beta.init <- matrix(NA, ncol = rank, nrow = q)
   Yinit <- (Y - X %*% matrix(rbind(rep(diag(1, ncol(Y)), p - 1)), ncol = ncol(Y), byrow = T)) %*% alpha.init
   for (i in 1:rank) {
-    fit <- lars(x = Z, y = Yinit[, i], type = "lasso", normalize = F, intercept = F)$beta[-1, ]
+    fit <- lars(x = Z, y = Yinit[, i], type = "lasso", normalize = F, intercept = F)$beta[-1, , drop=FALSE]
     beta.init[, i] <- fit[nrow(fit), ]
   }
   return(beta.init)
