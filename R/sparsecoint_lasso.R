@@ -76,7 +76,8 @@ sparseCointegrationFit <- function (Y, Z, X, alpha, omega, beta, p, rank, lambda
                        rank = rank, P = gamma_fit$P, cutoff = cutoff, intercept = intercept, exo = exo, tol = tol)
 
   return(list(gamma=gamma_fit$gamma, alpha=alpha_fit$alpha, beta=beta_fit$beta, omega=beta_fit$omega,
-              gamma_lambda=gamma_fit$lambda, beta_lambda=beta_fit$lambda, omega_rho=beta_fit$rho))
+              gamma_lambda=gamma_fit$lambda, beta_lambda=beta_fit$lambda, omega_rho=beta_fit$rho,
+              error=beta_fit$error))
 }
 
 sparseCointegrationInit <- function (Y, X, Z, rank, p, q, alpha.init=NULL, beta.init=NULL) {

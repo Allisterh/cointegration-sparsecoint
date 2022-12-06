@@ -62,6 +62,9 @@ determineRank <- function(data, r.init = NULL, p, max.iter.lasso = 3, conv.lasso
                                           p = p, r = r.init, max.iter = max.iter.lasso, conv = conv.lasso,
                                           lambda_gamma = lambda.gamma, lambda_beta = lambda_beta, rho_omega = rho.glasso,
                                           intercept = intercept, exo = data$exo_diff, tol = tol)
+      if (!is.null(lasso_fit$error)) {
+        return(list(rhat=0, error=paste0("Variable ", colnames(data$level)[lasso_fit$error], " has too many constant values.")))
+      }
 
       # Response and predictors in penalized reduced rank regression
       khat <- calculateKhat(Y, X, Z, lasso_fit$gamma, intercept, data$exo_diff)
@@ -136,6 +139,8 @@ rankSelectionCriterion <- function(p, Y, X, Z, r, alpha = NULL, beta, max.iter =
 
   while ((iter < max.iter) & (diff.obj > conv)) {
     fit <- sparseCointegrationFit(Y, Z, X, alpha, Omega, beta, p, r, lambda_gamma, lambda_beta, rho_omega, cutoff, intercept, exo, tol, TRUE)
+
+    if (!is.null(fit$error)) return(fit)
 
     # Check convergence
     residuals <- calcResiduals(Y, X, Z, fit$gamma, fit$beta, fit$alpha, intercept, exo)

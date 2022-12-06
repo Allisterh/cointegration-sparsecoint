@@ -17,7 +17,7 @@ fit.sparsecoint <- function (x) {
 
   rank <- determineRank(x$data, beta.init = NULL, alpha.init = NULL, p = x$p, lambda.gamma = 0.1, lambda_beta = lambda_beta, intercept=x$intercept)
   if (rank$rhat == 0) {
-    x$message <- "Cointegration rank of zero detected."
+    x$message <- paste("Cointegration rank of zero detected.", rank$error)
     x$rank <- rank$rhat
     return(x)
   }

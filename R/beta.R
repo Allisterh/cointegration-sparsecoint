@@ -32,9 +32,11 @@ nts.beta <- function(Y, X, Z, gamma, rank, P, alpha, alphastar, lambda = NULL, r
 
   # Determine each cointegrating vector by a Lasso Regression
   for (i in seq_len(rank)) {
-
     # Standardize the response matrix
     Ymatrixsd <- Ymatrix[ , i] / sd(Ymatrix[ , i])
+
+    # Sanity check for constant variables
+    if (any(is.nan(Ymatrixsd))) return(list(error=i))
 
     # If we have a grid of lambda parameters, use CV to find the optimum
     if (is.matrix(lambda)) {
