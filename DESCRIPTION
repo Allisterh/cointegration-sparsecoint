@@ -15,7 +15,7 @@ Depends: R (>= 3.5.0),
     mvtnorm,
     glmnet,
     lars,
-    glassor
+    glassor (>= 0.2)
 RoxygenNote: 7.1.1
 Suggests: 
     testthat (>= 3.0.0)
