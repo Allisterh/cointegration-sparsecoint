@@ -41,7 +41,7 @@ checkExo <- function (exo, n_obs, exo_K=NULL) {
 calcResiduals <- function (Y, X, Z, gamma, beta, alpha, intercept=FALSE, exo=NULL) {
   # Initialise zbeta if it is not provided
   if (!is.matrix(gamma)) {
-    gamma <- matrix(rep(diag(1, ncol(Y)), gamma - 1), ncol = ncol(Y), byrow = T)
+    gamma <- matrix(rep(diag(1, ncol(Y)), gamma), ncol = ncol(Y), byrow = T)
     if (!is.null(exo)) gamma <- rbind(matrix(0, ncol(exo), ncol(gamma)), gamma)
     if (intercept) gamma <- rbind(0, gamma)
   }
